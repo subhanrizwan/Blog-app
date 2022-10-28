@@ -132,6 +132,7 @@ login.addEventListener("click", function () {
 
       let loader = document.getElementById('loader')
       loader.style.display = 'block'
+      
       setTimeout(() => {
         window.location = 'blog.html'
       },3000);
