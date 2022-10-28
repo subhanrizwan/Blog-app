@@ -6,14 +6,12 @@ import {
   // onAuthStateChanged,
   // deleteUser
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-
-
 import {
   doc,
   setDoc,
   // getDoc,
   getFirestore,
-   getDoc,
+  getDoc,
   collection,
   query,
   where,
@@ -23,14 +21,6 @@ import {
   orderBy,
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytesResumable,
-//   getDownloadURL
-// } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
-
- 
 
 const firebaseConfig = {
   apiKey: "AIzaSyDN3tz4xYlK7Siq4ERJTvFRaxam5HC8uhg",
@@ -48,19 +38,16 @@ const auth = getAuth();
 const db = getFirestore();
 
 let reg = document.getElementById('Register')
-
 reg.addEventListener("click", function () {
 
-  // let Name= document.getElementById('Name') 
+
   let name = document.getElementById('reg-Name')
   let fName = document.getElementById('reg-fatherName')
   let number = document.getElementById('reg-num')
   let email = document.getElementById('reg-email')
   let pass = document.getElementById('reg-pass')
-  // let regfiles = document.getElementById('reg-file')
-  // let profile = document.getElementById('profile')
 
-
+  // regix//
   var name1 = /^[a-zA-Z ]+$/.test(name.value)
   var name2 = /^[a-zA-Z ]+$/.test(fName.value);
   var number2 = /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/.test(number.value)
@@ -86,11 +73,8 @@ reg.addEventListener("click", function () {
       disab.style.display = 'none'
       let load1 = document.getElementById('img_Reg')
       load1.style.marginTop = '25px'
-
       // Signed in 
       const user = userCredential.user;
-
-
       await setDoc(doc(db, "user", user.uid), {
         name: name.value,
         fname: fName.value,
@@ -98,7 +82,8 @@ reg.addEventListener("click", function () {
         email: email.value,
         pass: pass.value,
       });
-      console.log("Registered");
+      // console.log("Registered");
+      // swal("Registered", "congrats", "success")
       let load_reg = document.getElementById('loader-reg')
       load_reg.style.display = 'none'
       let disa = document.getElementById('Register')
@@ -106,76 +91,13 @@ reg.addEventListener("click", function () {
 
       swal("Registered", "you have registered", "success");
 
-      let nam = document.getElementById('reg-Name').value = ""
-      let fNam = document.getElementById('reg-fatherName').value = ""
-      let numbe = document.getElementById('reg-num').value = ""
-      let emai = document.getElementById('reg-email').value = ""
-      let pas = document.getElementById('reg-pass').value = ""
-      // let regfiles = document.getElementById('reg-file').value = ""
+      name.value - ""
+      fName.value = ""
+      number.value = ""
+      email.value = ""
+      pass.value = ""
 
-      // const storage = getStorage();
-      // let myFile = document.getElementById("reg-file");
-      // let file = myFile.files[0];
-      // console.log(file);
-      // console.log(file.name);
-
-      // const storageRef = ref(storage, `users/${user.uid}.jpg`);
-      // const uploadTask = uploadBytesResumable(storageRef, file);
-      // uploadTask.on('state_changed',
-      //   (snapshot) => {
-      //     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      //     console.log('Upload is ' + progress + '% done');
-      //     switch (snapshot.state) {
-      //       case 'paused':
-      //         console.log('Upload is paused');
-      //         break;
-      //       case 'running':
-      //         console.log('Upload is running');
-      //         break;
-      //     }
-      //     console.log(uploadTask);
-      //   },
-      //   (error) => {
-      //     console.log(error);
-      //   },
-      //   () => {
-      //     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-      //       console.log('File available at', downloadURL);
-      //       let url = await downloadURL;
-      //       console.log(url);
-
-
-      //       await setDoc(doc(db, "user", user.uid), {
-      //         name: name.value,
-      //         fname: fName.value,
-      //         number: number.value,
-      //         email: email.value,
-      //         pass: pass.value,
-      //         profile: url,
-
-      //       });
-
-      // let load_reg = document.getElementById('loader-reg')
-      // load_reg.style.display = 'none'
-      // let disab = document.getElementById('Register')
-      // disab.style.display = 'block' 
-
-      // swal("Registered","you have registered", "success");
-
-      // let nam= document.getElementById('reg-Name').value = ""
-      // let fNam = document.getElementById('reg-fatherName').value = ""
-      // let numbe = document.getElementById('reg-num').value = ""
-      // let emai = document.getElementById('reg-email').value = ""
-      // let pas = document.getElementById('reg-pass').value = ""
-      // let regfiles = document.getElementById('reg-file').value = ""
-
-      //     });
-      //   }
-
-      // );
-
-    })
-    .catch((error) => {
+    }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("error", error);
@@ -183,43 +105,47 @@ reg.addEventListener("click", function () {
       setTimeout(() => {
         let load_reg1 = document.getElementById('loader-reg')
         load_reg1.style.display = 'none'
+        // swal("Sorry!", "Email Already use!", "error");
       }, 2000)
 
-      swal("Sorry!", "Email Already use!", "error");
 
     });
 
 });
 
+
 // login user
+let login = document.getElementById('Login-user')
+login.addEventListener("click", function () {
+
+  let login_email = document.getElementById('login-email')
+  let login_pass = document.getElementById('login-pass')
+  
+  signInWithEmailAndPassword(auth, login_email.value, login_pass.value)
+    .then(async () => {
+      // const user = userCredential.user
+      const users = auth.currentUser
+      console.log(users.uid);
+
+      let btn = document.getElementById('main-cont')
+      btn.style.display = 'none'
+
+      let loader = document.getElementById('loader')
+      loader.style.display = 'block'
+      setTimeout(() => {
+        window.location = 'blog.html'
+      },3000);
+
+    }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        swal("Sorry!", "User Not Found!", "error");
+         })
+})
 
 
-  let login = document.getElementById('Login-user')
-  login.addEventListener("click", function () {
-  
-    let login_email = document.getElementById('login-email')
-    let login_pass = document.getElementById('login-pass')
-  
-  
-    signInWithEmailAndPassword(auth, login_email.value, login_pass.value)
-      .then(async () => {
-        // const user = userCredential.user
-        const users = auth.currentUser
-// console.log(user);
-console.log(users);
-console.log(users.uid);
-        let btn = document.getElementById('main-cont')
-        btn.style.display = 'none'
-  
-        let loader = document.getElementById('loader')
-        loader.style.display = 'block'
-  
-        window.location = 'creatBlog.html'
-      })
-    })
-  
 
-  
       // const docRef = doc(db, "user", user.uid);
       // console.log(docRef);
       // const docSnap = await getDoc(docRef);

@@ -55,9 +55,7 @@
       // blog app//
       let postBtn = document.getElementById('post_btn').addEventListener
       ("click",async()=>{ 
-        if(inp.value && postfile.file ){
-        
-       
+        if(inp.value){
         // add//
         const docRef = await addDoc(collection(db, "user"), {
           textpost:inp.value,
@@ -100,11 +98,10 @@ uploadTask.on('state_changed',
 });
 
 inp.value = ""
-postfile = ""
     })
     });
   }else{
-    swal("Invalid", "please make a post", "error");
+    swal("Invalid", "Invalid", "error");
   }
   }
 );

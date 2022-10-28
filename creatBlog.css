@@ -72,15 +72,13 @@ body{
     width: 100%;
     height:100%;
     /* background-color: rgb(41, 39, 39); */
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     /* align-items: center; */
 }
 #card{
-    
-    margin: 10px;
+    margin:5px;
     border-radius: 4px;
     /* margin: 8px; */
     /* margin-left: 45px; */
@@ -104,7 +102,7 @@ body{
     height: 42%;
     width: 100%;
     /* background-color: aqua; */
-    display: flex;
+    /* display: flex; */
     border-bottom: 1px solid gray;
 }
 h1{
@@ -134,15 +132,99 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     outline: none;
 
 }
-/* #post_file{
-    height: 105px;
-    /* background-color: aqua; 
-    display: flex;
-    /* width:; 
-} */
-/* #post_file[type="file"]{
-    height: 100%;
-} */
+@media only screen and (max-width:1024px){
+    h1{
+        position: relative;
+        bottom: 10px;
+    }
+}
+@media only screen and (max-width:768px){
+    .post_child{
+        width: 62%;
+    }
+    #card{
+        width:30%;
+        height: 68%;
+    }
+    #blog_post-child{
+        /* display: flex;
+        flex-wrap: wrap; */
+    }
+    #img_div{
+height: 47%;
+    }
+    h1{
+        position: relative;
+        bottom: 10px;
+    }
+}
 
+@media only screen and (max-width:425px){
+  
+        .post_child{
+            width: 90%;
+        }
+        #card{
+            width:45%;
+            height: 60%;
+        }
+        #blog_post-child{
+            /* display: flex;
+            flex-wrap: wrap; */
+        }
+        #img_div{
+    height: 47%;
+        }
+        h1{
+            position: relative;
+            bottom: 10px;
+        }
+}
+@media only screen and (max-width:375px){
+    .post_child{
+        width: 97%;
+    }
+    #card{
+        width:75%;
+        height: 68%;
+    }
+  
+    #img_div{
+height: 47%;
+    }
+ 
+    #post_file{
+        position: relative;
+        left: 10px;
+    }
+    h1{
+        position: relative;
+        bottom: 10px;
+    }
+}
+@media only screen and (max-width:320px){
+    .post_child{
+        width: 99%;
+    }
+    #card{
+        width:85%;
+        height: 68%;
+    }
+    #blog_post-child{
+        /* display: flex;
+        flex-wrap: wrap; */
+    }
+    #img_div{
+height: 47%;
+    }
+    #post_btn{
+        position: relative;
+        right: 5px;
+    }
+    #post_file{
+        position: relative;
+        left: 5px;
+    }
+}
 
 
