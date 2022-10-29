@@ -14,7 +14,7 @@
    import{
     getAuth,
     onAuthStateChanged,
-    deleteUser,
+  // deleteDoc,
     
    }from"https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js"
    import {
@@ -126,7 +126,7 @@ inp.value = ""
               ? `<i id="dislikepost" onclick="dislike_post('${doc.id}')" class="fa-solid fa-thumbs-up"></i>`
               :`<i id="likepost" onclick="like_post('${doc.id}')" class="fa-regular fa-thumbs-up"></i>`
             }  
-            <button id="btn_del" onclick="del_blog(this)">Delete Blog</button>
+            <button id="btn_del" onclick="del_blog('${doc.id}')">Delete Blog</button>
             </p>
             </div>
             
@@ -167,18 +167,10 @@ inp.value = ""
 
   });
   
-let del_blog =()=>{
-  // console.log("subhan");
-  // console.log(event.target.parentNode.parentNode.remove())
-  event.target.parentNode.parentNode.remove()
-//   const auth = getAuth();
-//   console.log(auth);
-//   const User1 = auth.currentUser
-//   console.log(User1);
-//  deleteUser(User1).then(() => {
-
-// });
-
+let del_blog =async(id)=>{
+  // event.target.parentNode.parentNode.remove()
+  await deleteDoc(doc(db, "user", id));
+console.log( await deleteDoc(doc(db, "user", id)));
 }
 window.del_blog = del_blog
 
