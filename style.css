@@ -59,8 +59,8 @@ h1 {
 }
 
 .input-p {
-    width: 80%;
-    height: 65px;
+    width:80%;
+    height:65px;
     /* background-color: rgb(41, 39, 39); */
     position: relative;
     left: 13%;
@@ -421,87 +421,127 @@ h6 {
 @media only screen and (max-width: 375px){
     
     #main-cont {
-        height: 170%;
+        height: 100%;
         /* width: 70%;   */
         position: relative;
-        top: 190px; 
+        top: 5px; 
+        display: flex;
     }
-        
+
     #main-cont-child {
         height: 100%;
-        width: 100%;
-        display: flex;
+        /* background-color: antiquewhite; */
     
         display: flex;
         flex-wrap: wrap;
     }
+    .input-p {
+        height:40px;
+        width: 70%;
+    }
     #reg-form h1 {
-        font-size: xx-large;
+        font-size: 25px;
+    }
+    hr{
+        width: 50%;
     }
 
     #reg-form {
-        position: relative;
-        left: 1px;
+        /* background-color: #8ac642; */
+        height: 57%;
         width: 100%;
+        /* display: flex; */
     }
 
     #Register {
         position: relative;
-        left: 1px;
+        left: 10px;
+        top:10px;
+        width: 50%;
+        height: 80%;
     }
 
     #log-form {
-        width: 80%; 
-         position: relative;
-        top: 6%;
+        /* background-color: #8ac642; */
+        width: 80%;
+        height:40% ;
+         position:relative;
+        top: 1px;
+        /* display: none; */
     }
-
-
+    .input-p1{
+        height: 20%;
+        width: 70%;
+    }
+    #Login-user{
+height: 80%;
+position: relative;
+left: 5%;
+top: 18%;
+    }
 }
-@media only screen and (min-width: 300px) and (max-width: 340px) {
+@media only screen and (min-width: 315px) and (max-width: 325px) {
+    
     #main-cont {
-        height: 170%;
+        height: 100%;
+        /* width: 70%;   */
         position: relative;
-        top: 190px;
+        top: 5px; 
+        display: flex;
     }
 
     #main-cont-child {
         height: 100%;
+        /* background-color: antiquewhite; */
+    
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
     }
-
+    .input-p {
+        height:40px;
+        width: 70%;
+    }
     #reg-form h1 {
-        font-size: xx-large;
+        font-size: 25px;
+    }
+    hr{
+        width: 50%;
     }
 
     #reg-form {
-        position: relative;
-        left: 1px;
+        /* background-color: #8ac642; */
+        height: 57%;
         width: 100%;
+        /* display: flex; */
     }
 
     #Register {
         position: relative;
-        left: 1px;
+        left: 10px;
+        top:10px;
+        width: 50%;
+        height: 80%;
     }
 
     #log-form {
-        width: 100%;
-        /* position: relative;
-        top: 10%; */
+        /* background-color: #8ac642; */
+        width: 80%;
+        height:40% ;
+         position:relative;
+        top: 1px;
+        /* display: none; */
+    }
+    .input-p1{
+        height: 20%;
+        width: 70%;
+    }
+    #Login-user{
+height: 80%;
+position: relative;
+left: 5%;
+top: 18%;
     }
 
-    #Login-user {
-        position: relative;
-        left: 1px;
-    }
-#loader{
-/* display: none; */
-position: relative;
-right: 95%;
-}
 }
 
 
