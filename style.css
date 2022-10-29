@@ -418,6 +418,46 @@ h6 {
 
 }
 
+@media only screen and (max-width: 375px){
+    
+    #main-cont {
+        height: 170%;
+        /* width: 70%;   */
+        position: relative;
+        top: 190px; 
+    }
+        
+    #main-cont-child {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #reg-form h1 {
+        font-size: xx-large;
+    }
+
+    #reg-form {
+        position: relative;
+        left: 1px;
+        width: 100%;
+    }
+
+    #Register {
+        position: relative;
+        left: 1px;
+    }
+
+    #log-form {
+        width: 80%; 
+         position: relative;
+        top: 6%;
+    }
+
+
+}
 @media only screen and (min-width: 300px) and (max-width: 340px) {
     #main-cont {
         height: 170%;
