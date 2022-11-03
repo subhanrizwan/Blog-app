@@ -25,8 +25,6 @@
   } 
    from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
-
-
    const firebaseConfig = {
     apiKey: "AIzaSyDN3tz4xYlK7Siq4ERJTvFRaxam5HC8uhg",
     authDomain: "blog-app-229a3.firebaseapp.com",
@@ -42,7 +40,8 @@
    const db = getFirestore();
    const storage = getStorage();
   console.log("Auth",auth)
-  
+
+  let likes;
   let inp = document.getElementById('inp')
   let postfile = document.getElementById('post_file')
   onAuthStateChanged(auth, (user) => {
@@ -55,14 +54,26 @@
       // blog app//
       let postBtn = document.getElementById('post_btn').addEventListener
       ("click",async()=>{ 
-        if(inp.value){
+
+        
+        if(inp.value ===""){
+          swal("Invalid!", "Please Fill!", "error");
+        }else{
+          
+          let loader1 = document.getElementById('loader1')
+          loader1.style.display = "block"
+        
+          // setTimeout(async()=>{
+
+         
         // add//
         const docRef = await addDoc(collection(db, "user"), {
           textpost:inp.value,
           likes: [],
           users : useruid,
         });
-        console.log("Document written with ID: ", docRef.id);
+        // console.log(docRef.likes);
+        console.log("Document written with ID:", docRef.id);
         // add//
  let file = postfile.files[0]
  console.log(postfile);
@@ -91,21 +102,31 @@ uploadTask.on('state_changed',
       // console.log('File available at', downloadURL);
       let url =  downloadURL
       console.log(url);
-
       const washingtonRef = doc(db, "user", docRef.id);
       await updateDoc(washingtonRef, {
         image : url 
-});
+      });
 
-inp.value = ""
+      inp.value = ""
+      postfile.file =""
+    // },3000)
+      // setTimeout(()=>{
+      //   let loader1 = document.getElementById('loader1')
+      //   loader1.style.display = "none"
+      // },3000)
     })
     });
-  }else{
-    swal("Invalid", "Invalid", "error");
+  // }else{
+  //   swal("Invalid", "Invalid", "error");
+  // }
   }
-  }
-);
-      
+  })
+
+
+
+
+        
+  // 
       const getpost=()=>{
         let blog_post= document.getElementById('blog_post-child')
         const unsubscribe = onSnapshot((collection(db, "user")), (querySnapshot) => {
@@ -113,6 +134,8 @@ inp.value = ""
           querySnapshot.forEach((doc) => {
             console.log(useruid);
             // console.log(doc.data().textpost);
+            // let like = likes
+            // console.log(like);
             blog_post.innerHTML +=
             `
             <div id="card">
@@ -120,18 +143,24 @@ inp.value = ""
             <img src="${doc.data().image}">
             </div>
              <div id="description"><p>${doc.data().textpost}</p></div>
-             <p> ${doc.data().likes.length}
-            
-              ${doc.data().likes.indexOf(useruid) !== -1
-              ? `<i id="dislikepost" onclick="dislike_post('${doc.id}')" class="fa-solid fa-thumbs-up"></i>`
-              :`<i id="likepost" onclick="like_post('${doc.id}')" class="fa-regular fa-thumbs-up"></i>`
+             <div id="card_footer">
+
+             <div id="likes_length">${doc.data().likes.length}</div>
+
+             <div id="likes">
+             ${doc.data().likes.indexOf(useruid) !== -1
+              ?`<i id="dislikepost" onclick="dislike_post('${doc.id}')" class="fa-solid fa-thumbs-up" ></i>`
+              :`<i id="likepost" onclick="like_post('${doc.id}')" class="fa-regular fa-thumbs-up" ></i>`
             }  
-            <button id="btn_del" onclick="del_blog('${doc.id}')">Delete Blog</button>
-            </p>
+             </div>
+             <div id="Delete_blog">
+             <button id="btn_del" onclick="del_blog('${doc.id}')">Delete Blog</button>
+             </div>
+             </div>
             </div>
             
             `
-            console.log(doc.id);
+            console.log(doc.data().likes.length);
           });
         })
       }
@@ -161,9 +190,9 @@ inp.value = ""
 // blog app///
 
     } 
-    // else {
-    // console.log("error");
-    // }
+    else {
+      swal("Sorry!", "User Not Found!", "error");
+    }
 
   });
   

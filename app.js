@@ -112,21 +112,24 @@ reg.addEventListener("click", function () {
     });
 
 });
-
-
 // login user
+
 let login = document.getElementById('Login-user')
 login.addEventListener("click", function () {
 
   let login_email = document.getElementById('login-email')
   let login_pass = document.getElementById('login-pass')
-  
+  // console.log(user);
+  // if(user)
   signInWithEmailAndPassword(auth, login_email.value, login_pass.value)
     .then(async () => {
       // const user = userCredential.user
       const users = auth.currentUser
       console.log(users.uid);
 
+      // if(!users.uid){
+      //   swal("Invalid!", "somethign invalid!", "error");
+      // }
       let btn = document.getElementById('main-cont')
       btn.style.display = 'none'
 
@@ -134,7 +137,7 @@ login.addEventListener("click", function () {
       loader.style.display = 'block'
       
       setTimeout(() => {
-        window.location = 'blog.html'
+        window.location = 'creatBlog.html'
       },3000);
 
     }).catch((error) => {
